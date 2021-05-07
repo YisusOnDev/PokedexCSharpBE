@@ -17,7 +17,7 @@ namespace PokedexWebBE.DAL.Implementations
             this.context = context;
         }
 
-        public bool Login(User username)
+        public bool Register(User username, User pa)
         {
             using (MySqlConnection conn = context.GetConnection())
             {
