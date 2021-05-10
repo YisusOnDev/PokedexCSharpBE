@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PokedexWebBE.Core.Common;
 using PokedexWebBE.DAL.Contracts;
 using PokedexWebBE.DAL.Entities;
 using System;
@@ -17,24 +18,38 @@ namespace PokedexWebBE.DAL.Implementations
             this.context = context;
         }
 
-        public bool Register(String username, String password)
+        public GenericAPIResponse<bool> Register(User user)
         {
-            using (MySqlConnection conn = context.GetConnection())
+            try
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO users VALUES({0}, {1}, 0)", username, password), conn);
-                cmd.ExecuteNonQuery();
-
-                /*using (var reader = cmd.ExecuteReader())
+                using (MySqlConnection conn = context.GetConnection())
                 {
-                    while (reader.Read())
-                    {
-                        return true;
-                    }
-                }*/
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(null, conn);
+                    cmd.CommandText = "INSERT INTO users(Username,Password,IsAdmin) VALUES(?username,?password, 0)";
+                    cmd.Parameters.Add("?username", MySqlDbType.VarChar).Value = user.Username;
+                    cmd.Parameters.Add("?password", MySqlDbType.VarChar).Value = user.Password;
+                    var result = cmd.ExecuteNonQuery();
+                    return new GenericAPIResponse<bool>(true);
+                }
             }
-
-            return true;
+            catch(MySqlException ex)
+            {
+                if (ex.Number == (int) MySqlErrorCode.DuplicateKeyEntry)
+                {
+                    return new GenericAPIResponse<bool>(new Exception("DuplicateUser"));
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new GenericAPIResponse<bool>(ex);
+            }
+            return new GenericAPIResponse<bool>(false);
         }
     }
 }

@@ -20,12 +20,12 @@ namespace PokedexWebBE.BL.Implementations
 
         public bool Login(LoginDTO loginDTO)
         {
-            var usuario = new User
+            var user = new User
             {
                 Username = loginDTO.Username,
                 Password = loginDTO.Password
             };
-            return LoginRepository.Login(usuario);
+            return LoginRepository.Login(user);
         }
     }
 }

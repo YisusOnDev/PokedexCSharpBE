@@ -1,4 +1,5 @@
 ﻿using PokedexWebBE.BL.Contracts;
+using PokedexWebBE.Core.Common;
 using PokedexWebBE.Core.DTO;
 using PokedexWebBE.DAL.Contracts;
 using PokedexWebBE.DAL.Entities;
@@ -18,10 +19,15 @@ namespace PokedexWebBE.BL.Implementations
             this.RegisterRepository = RegisterRepository;
         }
 
-        public bool Register(RegisterDTO registerDTO)
+        public GenericAPIResponse<bool> Register(RegisterDTO registerDTO)
         {
-            Console.WriteLine(registerDTO.Username, registerDTO.Password);
-            return RegisterRepository.Register(registerDTO.Username, registerDTO.Password);
+            var registerUser = new User
+            {
+                Username = registerDTO.Username,
+                Password = registerDTO.Password
+
+            };
+            return RegisterRepository.Register(registerUser);
         }
     }
 }

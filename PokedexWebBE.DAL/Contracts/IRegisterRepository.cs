@@ -1,4 +1,5 @@
-﻿using PokedexWebBE.DAL.Entities;
+﻿using PokedexWebBE.Core.Common;
+using PokedexWebBE.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace PokedexWebBE.DAL.Contracts
 {
     public interface IRegisterRepository
     {
-        public bool Register(String username, String password);
+        public GenericAPIResponse<bool> Register(User user);
     }
 }
