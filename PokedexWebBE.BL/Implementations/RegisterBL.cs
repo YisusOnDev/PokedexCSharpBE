@@ -20,12 +20,8 @@ namespace PokedexWebBE.BL.Implementations
 
         public bool Register(RegisterDTO registerDTO)
         {
-            var user = new User
-            {
-                Username = registerDTO.Username,
-                Password = registerDTO.Password
-            };
-            return RegisterRepository.Register(user);
+            Console.WriteLine(registerDTO.Username, registerDTO.Password);
+            return RegisterRepository.Register(registerDTO.Username, registerDTO.Password);
         }
     }
 }

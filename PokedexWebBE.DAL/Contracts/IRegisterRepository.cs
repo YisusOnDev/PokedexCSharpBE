@@ -9,6 +9,6 @@ namespace PokedexWebBE.DAL.Contracts
 {
     public interface IRegisterRepository
     {
-        public bool Register(User username);
+        public bool Register(String username, String password);
     }
 }

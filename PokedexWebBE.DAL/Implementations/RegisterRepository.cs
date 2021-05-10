@@ -17,30 +17,24 @@ namespace PokedexWebBE.DAL.Implementations
             this.context = context;
         }
 
-        public bool Register(User username, User pa)
+        public bool Register(String username, String password)
         {
             using (MySqlConnection conn = context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(String.Format("select * from users " +
-                                                    "where username = '{0}' and" +
-                                                    " password = '{1}'", username.Username, username.Password), conn);
+                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO users VALUES({0}, {1}, 0)", username, password), conn);
+                cmd.ExecuteNonQuery();
 
-                using (var reader = cmd.ExecuteReader())
+                /*using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         return true;
                     }
-                }
+                }*/
             }
 
-            return false;
-        }
-
-        public bool Register(User username)
-        {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
