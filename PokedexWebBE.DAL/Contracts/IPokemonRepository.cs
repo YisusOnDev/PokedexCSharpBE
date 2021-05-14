@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace PokedexWebBE.DAL.Contracts
 {
-    public interface IRegisterRepository
+    public interface IPokemonRepository
     {
-        public GenericAPIResponse<bool> Register(User user);
+        public GenericAPIResponse<List<Pokemon>> GetAllPokemon();
+        public GenericAPIResponse<bool> DeletePokemon(int id);
     }
 }

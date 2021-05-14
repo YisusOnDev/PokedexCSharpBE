@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace PokedexWebBE.BL.Contracts
 {
-    public interface IRegisterBL
+    public interface IUserBL
     {
-        public GenericAPIResponse<bool> Register(RegisterDTO registerDTO);
+        public GenericAPIResponse<bool> Create(UserDTO userDTO);
     }
 }

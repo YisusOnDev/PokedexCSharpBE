@@ -13,19 +13,19 @@ namespace PokedexWebBE.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RegisterController : ControllerBase
+    public class UserController : ControllerBase
     {
-        public IRegisterBL RegisterBL { get; set; }
+        public IUserBL UserBL { get; set; }
 
-        public RegisterController(IRegisterBL registerBL)
+        public UserController(IUserBL userBL)
         {
-            this.RegisterBL = registerBL;
+            this.UserBL = userBL;
         }
 
         [HttpPost]
-        public GenericAPIResponse<bool> Register(RegisterDTO registerDTO) 
+        public GenericAPIResponse<bool> Create(UserDTO userDTO) 
         {
-            return RegisterBL.Register(registerDTO);
+            return UserBL.Create(userDTO);
         }
     }
 }

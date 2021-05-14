@@ -47,8 +47,10 @@ namespace PokedexWebBE.API
 
             services.AddScoped<ILoginBL, LoginBL>();
             services.AddScoped<ILoginRepository, LoginRepository>();
-            services.AddScoped<IRegisterBL, RegisterBL>();
-            services.AddScoped<IRegisterRepository, RegisterRepository>();
+            services.AddScoped<IUserBL, UserBL>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPokemonBL, PokemonBL>();
+            services.AddScoped<IPokemonRepository, PokemonRepository>();
             services.Add(new ServiceDescriptor(typeof(PokedexWebContext), new PokedexWebContext(Configuration.GetConnectionString("pokedexdb"))));
         }
 

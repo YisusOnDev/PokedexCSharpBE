@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokedexWebBE.Core.DTO
 {
-    public class RegisterDTO
+    public class UserDTO
     {
         public string Username { get; set; }
         public string Password { get; set; }

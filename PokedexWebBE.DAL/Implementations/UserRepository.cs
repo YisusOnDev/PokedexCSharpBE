@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace PokedexWebBE.DAL.Implementations
 {
-    public class RegisterRepository : IRegisterRepository
+    public class UserRepository : IUserRepository
     {
         public PokedexWebContext context { get; set; }
-        public RegisterRepository(PokedexWebContext context)
+        public UserRepository(PokedexWebContext context)
         {
             this.context = context;
         }
 
-        public GenericAPIResponse<bool> Register(User user)
+        public GenericAPIResponse<bool> Create(User user)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace PokedexWebBE.DAL.Implementations
                     cmd.CommandText = "INSERT INTO users(Username,Password,IsAdmin) VALUES(?username,?password, 0)";
                     cmd.Parameters.Add("?username", MySqlDbType.VarChar).Value = user.Username;
                     cmd.Parameters.Add("?password", MySqlDbType.VarChar).Value = user.Password;
-                    var result = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                     return new GenericAPIResponse<bool>(true);
                 }
             }
@@ -41,12 +41,11 @@ namespace PokedexWebBE.DAL.Implementations
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    return new GenericAPIResponse<bool>(ex);
                 }
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return new GenericAPIResponse<bool>(ex);
             }
             return new GenericAPIResponse<bool>(false);
