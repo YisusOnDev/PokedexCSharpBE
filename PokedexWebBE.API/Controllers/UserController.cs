@@ -23,6 +23,7 @@ namespace PokedexWebBE.API.Controllers
         }
 
         [HttpPost]
+        [Route("register")]
         public GenericAPIResponse<bool> Create(UserDTO userDTO) 
         {
             return UserBL.Create(userDTO);

@@ -22,14 +22,16 @@ namespace PokedexWebBE.API.Controllers
         {
             this.PokemonBL = pokemonBL;
         }
-
+        
         [HttpPost]
+        [Route("getallpokemon")]
         public GenericAPIResponse<List<Pokemon>> GetAllPokemon()
         {
             return PokemonBL.GetAllPokemon();
         }
 
         [HttpDelete]
+        [Route("deletepokemon")]
         public GenericAPIResponse<bool> DeletePokemon(PokemonDTO pokemonDTO)
         {
             return PokemonBL.DeletePokemon(pokemonDTO);
