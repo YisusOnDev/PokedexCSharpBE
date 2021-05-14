@@ -75,7 +75,7 @@ namespace PokedexWebBE.DAL.Implementations
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(null, conn);
-                    cmd.CommandText = "DELETE FROM pokemon WHERE Numero = ?pokemonId";
+                    cmd.CommandText = "DELETE FROM pokemon_tipos WHERE Numero = ?pokemonId; DELETE FROM pokemon WHERE Numero = ?pokemonId ;";
                     cmd.Parameters.Add("?pokemonId", MySqlDbType.Int32).Value = pokemonId;
                     cmd.ExecuteNonQuery();
                     return new GenericAPIResponse<bool>(true);
@@ -98,6 +98,5 @@ namespace PokedexWebBE.DAL.Implementations
             }
             return new GenericAPIResponse<bool>(false);
         }
-
     }
 }
