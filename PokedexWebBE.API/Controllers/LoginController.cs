@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PokedexWebBE.BL.Contracts;
 using PokedexWebBE.BL.Implementations;
+using PokedexWebBE.Core.Common;
 using PokedexWebBE.Core.DTO;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace PokedexWebBE.API.Controllers
         }
 
         [HttpPost]
-        public bool Login(LoginDTO loginDTO) 
+        public GenericAPIResponse<bool> Login(LoginDTO loginDTO) 
         {
             return LoginBL.Login(loginDTO);
         }

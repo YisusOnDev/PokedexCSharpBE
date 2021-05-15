@@ -36,6 +36,20 @@ namespace PokedexWebBE.API.Controllers
         {
             return PokemonBL.DeletePokemon(pokemonDTO);
         }
+
+        [HttpPut]
+        [Route("updatepokemon")]
+        public GenericAPIResponse<bool> UpdatePokemon(PokemonDTO pokemonDTO)
+        {
+            return PokemonBL.UpdatePokemon(pokemonDTO);
+        }
+
+        [HttpPost]
+        [Route("insertpokemon")]
+        public GenericAPIResponse<bool> InsertPokemon(PokemonDTO pokemonDTO)
+        {
+            return PokemonBL.InsertPokemon(pokemonDTO);
+        }
     }
 
 }

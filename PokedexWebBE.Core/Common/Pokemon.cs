@@ -19,7 +19,7 @@ namespace PokedexWebBE.Core.Common
         public String soundUrl { get; set; }
         public String Types { get; set; }
 
-        public Pokemon(int id, String name, String description, float height, float weight, String ability, String category, String imageUrl, String soundUrl)
+        public Pokemon(int id, String name, String description, float height, float weight, String ability, String category, String imageUrl, String soundUrl, String types)
         {
             this.id = id;
             this.name = name;
@@ -30,11 +30,10 @@ namespace PokedexWebBE.Core.Common
             this.category = category;
             this.imageUrl = imageUrl;
             this.soundUrl = soundUrl;
+            this.Types = types;
         }
-
-        public Pokemon(int id, String name, String description, float height, float weight, String ability, String category, String imageUrl, String soundUrl, String types)
+        public Pokemon(String name, String description, float height, float weight, String ability, String category, String imageUrl, String soundUrl, String types)
         {
-            this.id = id;
             this.name = name;
             this.description = description;
             this.height = height;

@@ -48,7 +48,6 @@ namespace PokedexWebBE.DAL.Implementations
             {
                 return new GenericAPIResponse<bool>(ex);
             }
-            return new GenericAPIResponse<bool>(false);
         }
     }
 }

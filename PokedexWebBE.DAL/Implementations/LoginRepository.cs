@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PokedexWebBE.Core.Common;
 using PokedexWebBE.DAL.Contracts;
 using PokedexWebBE.DAL.Entities;
 using System;
@@ -17,7 +18,7 @@ namespace PokedexWebBE.DAL.Implementations
             this.context = context;
         }
 
-        public bool Login(User username)
+        public GenericAPIResponse<bool> Login(User username)
         {
             using (MySqlConnection conn = context.GetConnection())
             {
@@ -30,12 +31,12 @@ namespace PokedexWebBE.DAL.Implementations
                 {
                     while (reader.Read())
                     {
-                        return true;
+                        return new GenericAPIResponse<bool>(true);
                     }
                 }
             }
 
-            return false;
+            return new GenericAPIResponse<bool>(new Exception("UserDoesNotExist"));
         }
     }
 }

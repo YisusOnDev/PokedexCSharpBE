@@ -1,4 +1,5 @@
-﻿using PokedexWebBE.Core.DTO;
+﻿using PokedexWebBE.Core.Common;
+using PokedexWebBE.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace PokedexWebBE.BL.Contracts
 {
     public interface ILoginBL
     {
-        public bool Login(LoginDTO loginDTO);
+        public GenericAPIResponse<bool> Login(LoginDTO loginDTO);
     }
 }

@@ -1,4 +1,5 @@
-﻿using PokedexWebBE.DAL.Entities;
+﻿using PokedexWebBE.Core.Common;
+using PokedexWebBE.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace PokedexWebBE.DAL.Contracts
 {
     public interface ILoginRepository
     {
-        public bool Login(User username);
+        public GenericAPIResponse<bool> Login(User username);
     }
 }

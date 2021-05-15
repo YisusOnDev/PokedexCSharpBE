@@ -1,4 +1,5 @@
 ﻿using PokedexWebBE.BL.Contracts;
+using PokedexWebBE.Core.Common;
 using PokedexWebBE.Core.DTO;
 using PokedexWebBE.DAL.Contracts;
 using PokedexWebBE.DAL.Entities;
@@ -18,7 +19,7 @@ namespace PokedexWebBE.BL.Implementations
             this.LoginRepository = LoginRepository;
         }
 
-        public bool Login(LoginDTO loginDTO)
+        public GenericAPIResponse<bool> Login(LoginDTO loginDTO)
         {
             var user = new User
             {

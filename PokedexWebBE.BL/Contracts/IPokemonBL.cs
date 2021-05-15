@@ -12,5 +12,7 @@ namespace PokedexWebBE.BL.Contracts
     {
         public GenericAPIResponse<List<Pokemon>> GetAllPokemon();
         public GenericAPIResponse<bool> DeletePokemon(PokemonDTO pokemonDTO);
+        public GenericAPIResponse<bool> UpdatePokemon(PokemonDTO pokemonDTO);
+        public GenericAPIResponse<bool> InsertPokemon(PokemonDTO pokemonDTO);
     }
 }

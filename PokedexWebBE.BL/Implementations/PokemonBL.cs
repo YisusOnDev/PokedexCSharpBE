@@ -25,7 +25,41 @@ namespace PokedexWebBE.BL.Implementations
         }
         public GenericAPIResponse<bool> DeletePokemon(PokemonDTO pokemonDTO)
         {
-            return PokemonRepository.DeletePokemon(pokemonDTO.Id);
+            return PokemonRepository.DeletePokemon(pokemonDTO.id);
+        }
+
+        public GenericAPIResponse<bool> UpdatePokemon(PokemonDTO pokemonDTO)
+        {
+            var pokemon = new Pokemon
+            (
+                pokemonDTO.id,
+                pokemonDTO.name,
+                pokemonDTO.description,
+                pokemonDTO.height,
+                pokemonDTO.weight,
+                pokemonDTO.ability,
+                pokemonDTO.category,
+                pokemonDTO.imageUrl,
+                pokemonDTO.soundUrl,
+                pokemonDTO.Types
+            );
+            return PokemonRepository.UpdatePokemon(pokemon);
+        }
+        public GenericAPIResponse<bool> InsertPokemon(PokemonDTO pokemonDTO)
+        {
+            var pokemon = new Pokemon
+            (
+                pokemonDTO.name,
+                pokemonDTO.description,
+                pokemonDTO.height,
+                pokemonDTO.weight,
+                pokemonDTO.ability,
+                pokemonDTO.category,
+                pokemonDTO.imageUrl,
+                pokemonDTO.soundUrl,
+                pokemonDTO.Types
+            );
+            return PokemonRepository.InsertPokemon(pokemon);
         }
     }
 }
